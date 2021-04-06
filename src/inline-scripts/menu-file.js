@@ -40,6 +40,11 @@
     app.saveFileAs();
   });
 
+  document.getElementById('butDelete').addEventListener('click', () => {
+    myMenus.hide(menuFile);
+    app.deleteFile();
+  });
+
   document.getElementById('butClose').addEventListener('click', () => {
     myMenus.hide(menuFile);
     app.quitApp();

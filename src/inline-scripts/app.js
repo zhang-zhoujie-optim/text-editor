@@ -193,6 +193,23 @@ app.saveFileAs = async () => {
 };
 
 /**
+ * Delete a file on the disk.
+ */
+app.deleteFile = async () => {
+  try {
+    const dirHandle = await window.showDirectoryPicker();
+    const fileHandle = await window.showOpenFilePicker();
+    dirHandle.removeEntry(fileHandle[0].name);
+  } catch (ex) {
+    gaEvent('Error', 'FileDelete', ex.name);
+    const msg = 'Unable to delete file';
+    console.error(msg, ex);
+    alert(msg);
+  }
+  app.setFocus();
+};
+
+/**
  * Attempts to close the window
  */
 app.quitApp = () => {
